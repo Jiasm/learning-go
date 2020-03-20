@@ -25,8 +25,8 @@ func main() {
 }
 
 func binarySearch(array []int, arraySize int, target int) (int, error) {
+	var index int
 	current := 0
-	index := 0
 
 	size := arraySize - 1
 	current = 0
