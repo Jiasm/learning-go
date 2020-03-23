@@ -34,6 +34,5 @@ func sortArr(arr []int, arrSize int) []int {
 			}
 		}
 	}
-
 	return arr
 }
