@@ -1,5 +1,10 @@
 package main
 
+/**
+ * 归并排序：
+ * 将数组从中间进行拆分，递归调用拆分逻辑直到无法再拆分
+ * 将拆分后的两段数组中的元素按照顺序进行排列，并返回
+ */
 import (
 	"fmt"
 	"math"
@@ -31,8 +36,6 @@ func mergeSort(arr []int, start int, end int) []int {
 	}
 
 	sliceIndex := int(math.Ceil(float64((end + start) / 2)))
-
-	// tempArr := []int{}
 
 	mergeSort(arr, start, sliceIndex)
 
@@ -69,11 +72,11 @@ func merge(arr []int, start int, sliceIndex int, end int) {
 
 	for index := start; index <= end; index++ {
 		if arrLeft[leftIndex] >= arrRight[rightIndex] {
-			fmt.Printf("----\njoin left %v %v %v %d %d: \norigin: %d origin index: %d \nnew: %d new index: %d\n----\n", arr, arrLeft, arrRight, start, end, arr[index], index, arrLeft[leftIndex], leftIndex)
+			// fmt.Printf("----\njoin left %v %v %v %d %d: \norigin: %d origin index: %d \nnew: %d new index: %d\n----\n", arr, arrLeft, arrRight, start, end, arr[index], index, arrLeft[leftIndex], leftIndex)
 			arr[index] = arrLeft[leftIndex]
 			leftIndex++
 		} else {
-			fmt.Printf("----\njoin right %v %v %v %d %d: \norigin: %d origin index: %d \nnew: %d new index: %d\n----\n", arr, arrLeft, arrRight, start, end, arr[index], index, arrRight[rightIndex], rightIndex)
+			// fmt.Printf("----\njoin right %v %v %v %d %d: \norigin: %d origin index: %d \nnew: %d new index: %d\n----\n", arr, arrLeft, arrRight, start, end, arr[index], index, arrRight[rightIndex], rightIndex)
 			arr[index] = arrRight[rightIndex]
 			rightIndex++
 		}

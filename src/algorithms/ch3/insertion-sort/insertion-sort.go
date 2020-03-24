@@ -2,6 +2,16 @@ package main
 
 import "fmt"
 
+/**
+ * 插入排序：
+ * 遍历数组元素从 1 开始到结束，取下标 i
+ * 反向遍历数组元素 从 i - 1 到数组开始，取下标 j
+ * 暂存元素 i 为 t
+ * 如果 元素 j 小于 t，则将下标 j + 1 的值设置为元素 j
+ * 如果 元素 j 大于等于 t，则终止循环
+ * 内层循环结束后将 j + 1 下标赋值为 t
+ */
+
 func main() {
 	arrSize := 6
 	arr := make([]int, arrSize)
