@@ -9,8 +9,10 @@ func main() {
 	linkList.add(2)
 	linkList.add(3)
 
+	linkList.insertAfter(2, 4)
+
 	fmt.Println(linkList.last())
-	fmt.Println(linkList.find(2), linkList.find(2).next)
+	fmt.Println(linkList.find(2).next, linkList.find(2).next.next)
 }
 
 type LinkListItem struct {
@@ -60,5 +62,15 @@ func (l *LinkList) find(val int) *LinkListItem {
 				return nil
 			}
 		}
+	}
+}
+
+func (l *LinkList) insertAfter(val, newVal int) {
+	target := l.find(val)
+	newItem := &LinkListItem{ newVal, nil }
+
+	if target != nil {
+		newItem.next = target.next
+		target.next = newItem
 	}
 }
