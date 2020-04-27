@@ -7,10 +7,11 @@ func main() {
 
 	linkList.add(1)
 	linkList.add(2)
+	linkList.add(5)
 	linkList.add(3)
+	linkList.add(9)
 
-	fmt.Println(linkList.last())
-	fmt.Println(linkList.find(2), linkList.find(2).next)
+	fmt.Println(max(linkList.first))
 }
 
 type LinkListItem struct {
@@ -61,4 +62,16 @@ func (l *LinkList) find(val int) *LinkListItem {
 			}
 		}
 	}
+}
+
+func max(item *LinkListItem) *LinkListItem {
+	if item.next != nil {
+		nextItem := max(item.next)
+
+		if nextItem.value > item.value {
+			return nextItem
+		}
+	}
+
+	return item
 }
