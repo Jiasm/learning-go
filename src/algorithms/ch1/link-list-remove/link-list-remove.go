@@ -8,8 +8,11 @@ func main() {
 	linkList.add(1)
 	linkList.add(2)
 	linkList.add(3)
+	linkList.add(4)
+	linkList.add(5)
 
-	fmt.Println(linkList.last())
+	linkList.remove(3)
+
 	fmt.Println(linkList.find(2), linkList.find(2).next)
 }
 
@@ -60,5 +63,31 @@ func (l *LinkList) find(val int) *LinkListItem {
 				return nil
 			}
 		}
+	}
+}
+
+func (l *LinkList) findBefore(val int) *LinkListItem {
+	if l.first == nil {
+		return nil
+	} else {
+		current := l.first
+
+		for current != nil && current.next != nil {
+			if current.next.value == val {
+				return current
+			}
+
+			current = current.next
+		}
+
+		return nil
+	}
+}
+
+func (l *LinkList) remove(val int) {
+	target := l.findBefore(val)
+
+	if target != nil {
+		target.next = target.next.next
 	}
 }
