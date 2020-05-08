@@ -7,20 +7,19 @@ type UF struct {
 	points []int
 }
 
-func (uf UF) Count() int {
+func (uf *UF) Count() int {
 	return uf.count
 }
 
-func (uf UF) find(point int) int {
+func (uf *UF) find(point int) int {
 	return uf.points[point]
 }
 
-func (uf UF) connected(q, p int) bool {
-	fmt.Println(uf.find(q), uf.find(p))
+func (uf *UF) connected(q, p int) bool {
 	return uf.find(q) == uf.find(p)
 }
 
-func (uf UF) union(q, p int) {
+func (uf *UF) union(q, p int) {
 	if uf.connected(q, p) {
 		return
 	}
@@ -29,14 +28,11 @@ func (uf UF) union(q, p int) {
 
 	for index, item := range uf.points {
 		if item == pPoint {
-			fmt.Println("change")
 			uf.points[index] = qPoint
 		}
 	}
 
 	uf.count--
-
-	fmt.Println("inside", uf.count)
 }
 
 func main() {
